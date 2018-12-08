@@ -29,7 +29,7 @@ If the application was deployed so that it could get a public IP with some locat
 ## Limitations
 Running under docker-compose, the IP address that is presented to the geolocation API is always private, and therefore doesn't end up with a location. A deployed instance wouldn't suffer this problem as it would either receive a public IP directly, or via upstream proxies and by using ipware it should be figured out automagically which IP to use.
 
-In the interests of time, there is no CI/CD setup, no docker image to pull.
+There is no CI/CD setup, no pre-built docker image to pull and no terraform config. I'd want all of these for any deployment usually. 
 
 Not everything is 12 factor, just whatever I added or needed to modify. A proper project would have any reasonably variable settings loaded as environment variables, with potential for defaults.
 
