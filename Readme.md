@@ -26,7 +26,7 @@ You should then get back immediately the saved representation of your event, wit
 
 If the application was deployed so that it could get a public IP with some location data, you would be able to make a GET request to `127.0.0.1:8000/api/events/<uuid>/` and see the filled in location data. The API will accept and continue to process requests with/without the API resolving.
 
-##Limitations
+## Limitations
 Running under docker-compose, the IP address that is presented to the geolocation API is always private, and therefore doesn't end up with a location. A deployed instance wouldn't suffer this problem as it would either receive a public IP directly, or via upstream proxies and by using ipware it should be figured out automagically which IP to use.
 
 In the interests of time, there is no CI/CD setup, no docker image to pull.
@@ -49,5 +49,5 @@ There is no Sentry, Datadog or other runtime error or profiling tools attached w
 
 No KPI metrics are currently tracked, although the main ones could probably be retroactively generated if needed. I'd probably look to prometheus or riemann for that, although I've never used the latter before I have seen just how powerful it can be.
 
-##Deployment
+## Deployment
 To deploy this application, I'd recommend sticking with docker, probably using either Kubes or AWS ECS, with an ALB or Nginx Sidecar container with public IP. I personally like using a combination of Terraform, Packer, a CI service like CircleCI or whatever to build and deploy everything.
