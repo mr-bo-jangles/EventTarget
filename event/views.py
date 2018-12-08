@@ -15,7 +15,7 @@ from event.serializers import EventSerializer
 ))
 class EventViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows events to be created, viewed or edited.
     """
     queryset = Event.objects.all().order_by('-datetime_created')
     serializer_class = EventSerializer
