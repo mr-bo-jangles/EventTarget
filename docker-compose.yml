@@ -25,7 +25,11 @@ services:
       - local.env
   web:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: >
+      sh -c "python3 wait_for_postgres.py &&
+             python3 manage.py migrate &&
+             python3 manage.py test --noinput &&
+             python3 manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:
@@ -44,5 +48,6 @@ services:
       - db
       - geo
       - redis
+      - web
     env_file:
       - "local.env"
